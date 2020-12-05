@@ -1,3 +1,17 @@
+/* 
+INPUT
+7
+8
+0 1 10
+1 2 10
+2 3 10
+0 3 40
+3 4 2
+4 5 3
+5 6 3
+4 6 8 
+0 6
+*/
 import java.util.Scanner;
 import java.util.ArrayList;
 public class Main{
