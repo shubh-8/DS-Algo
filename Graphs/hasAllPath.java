@@ -24,8 +24,8 @@ public class Main{
             if(vis[e.nbr] == false){
                 hasAllPath(e.nbr,dest,graph,vis,ans+e.nbr+" ");
             }
-                
         }
+        vis[src] = false;
     }
 
     public static void main(String[] args) {
