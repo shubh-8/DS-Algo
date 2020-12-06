@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class HamiltonianCycle
+public class Main
 {
     static class Edge
     {
@@ -15,7 +15,7 @@ public class HamiltonianCycle
     public static void hamiltonianPath(int src, ArrayList<Edge>[] graph,
                                         HashSet<Integer> vis, String psf)
     {
-        if(vis.size() == graph.length-1)
+        if(psf.length() == graph.length)
         {
             System.out.print(psf);
             if(ishamiltonianCycle(graph,psf))
@@ -29,7 +29,7 @@ public class HamiltonianCycle
         {
             if(vis.contains(e.nbr) == false)
             {
-                hamiltonianPath(e.nbr,graph,vis,psf+e.nbr+" ");
+                hamiltonianPath(e.nbr,graph,vis,psf+e.nbr+"");
             }
         }
         vis.remove(src);
@@ -38,7 +38,7 @@ public class HamiltonianCycle
     public static boolean ishamiltonianCycle(ArrayList<Edge>[] graph, String psf)
     {
         int src = Integer.parseInt(psf.charAt(0)+"");
-        int dest = Integer.parseInt(psf.charAt(psf.length()-2)+"");
+        int dest = Integer.parseInt(psf.charAt(psf.length()-1)+"");
         for(Edge e:graph[dest])
         {
             if(src == e.nbr)
@@ -67,7 +67,7 @@ public class HamiltonianCycle
         }
         HashSet<Integer> vis = new HashSet<>();
         int src = sc.nextInt();
-        hamiltonianPath(src,graph,vis,src+" ");
+        hamiltonianPath(src,graph,vis,src+"");
         
     }
 }
