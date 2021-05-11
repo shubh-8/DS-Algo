@@ -24,10 +24,11 @@ public class Main {
         // if a celebrity is there print it's index (not position), if there is not then
         // print "none"
         Stack<Integer> celeb = new Stack();
-        
+        // push all celeb in stack
         for(int i=0; i<arr.length; i++){
             celeb.push(i);
         }
+        // get potential candidate
         while(celeb.size()>1){
             int c1 = celeb.pop();
             int c2 = celeb.pop();
@@ -38,9 +39,10 @@ public class Main {
                 celeb.push(c2);
             }
         }
+        // check it is celeb
         int c = celeb.pop();
         for(int i=0;i<arr[0].length;i++){
-            if(arr[c][i]==1){
+            if(arr[c][i]==1 && i!=c){
                 System.out.println("none");
                 return;
             }
