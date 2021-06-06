@@ -1,14 +1,15 @@
-static class BSTPair{
-      int min, max;
+class Solution {
+    class BSTPair{
+      long min, max;
       boolean isBST;
       BSTPair(){
-          min = Integer.MAX_VALUE;
-          max = Integer.MIN_VALUE;
+          min = Long.MAX_VALUE;
+          max = Long.MIN_VALUE;
           isBST = true;
       }
   }
   
-  public static BSTPair checkBST(Node root){
+  public BSTPair checkBST(TreeNode root){
       if(root == null){
           return new BSTPair();
       }
@@ -17,15 +18,20 @@ static class BSTPair{
       BSTPair rres = checkBST(root.right);
       
       BSTPair mres = new BSTPair();
-      boolean status = (lres.max < root.data) && (rres.min > root.data);
+      boolean status = (lres.max < root.val) && (rres.min > root.val);
       
       if(mres.isBST == false){
           return new BSTPair();
       }
       
-      mres.min = Math.min(lres.min, Math.min(rres.min,root.data));
-      mres.max = Math.max(lres.max, Math.max(rres.max,root.data));
+      mres.min = Math.min(lres.min, Math.min(rres.min,root.val));
+      mres.max = Math.max(lres.max, Math.max(rres.max,root.val));
       mres.isBST = lres.isBST && rres.isBST && status;
       
       return mres;
   }
+    public boolean isValidBST(TreeNode root) {
+        BSTPair res = checkBST(root);
+        return res.isBST;
+    }
+}
